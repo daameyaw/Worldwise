@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
@@ -10,7 +12,29 @@ import CityList from "./components/CityList";
 /**
  * Main application component
  */
+
+// const BASE__URL = `http://localhost:8000`;
 function App() {
+  const [cities, setCities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(function () {
+    async function fetchCites() {
+      try {
+        setIsLoading(true);
+        const respond = await fetch(`http://localhost:8000/cities`);
+        const data = await respond.json();
+        console.log(data);
+        setCities(data);
+        // console.log(cities);
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchCites();
+  }, []);
   return (
     <BrowserRouter>
       <Routes>
@@ -32,10 +56,16 @@ function App() {
 
           {/* HOME ROUTE */}
           {/* INDEX IS THE DEFAULT CHILD ROUTE */}
-          <Route index element={<CityList />} />
+          <Route
+            index
+            element={<CityList cities={cities} isLoading={isLoading} />}
+          />
 
           {/* CITIES ROUTES */}
-          <Route path="cities" element={<CityList />} />
+          <Route
+            path="cities"
+            element={<CityList cities={cities} isLoading={isLoading} />}
+          />
 
           {/* COUNTRIES ROUTES */}
           <Route path="countries" element={<p>Countries</p>} />
