@@ -45,7 +45,7 @@ function App() {
         <Route path="pricing" element={<Pricing />} />
 
         {/* * Route for the homepage */}
-        {/* <Route path="/" element={<Homepage />} /> */}
+        <Route path="/" element={<Homepage />} />
 
         {/* Route for 404 page */}
         <Route path="*" element={<PageNotFound />} />
