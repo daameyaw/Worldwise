@@ -4,7 +4,7 @@ function CityItem({ city }) {
   return (
     <li className={styles.CityItem}>
       <span className={styles.emoji}>{emoji}</span>
-      <h3 cl></h3>
+      <h3></h3>
     </li>
   );
 }
