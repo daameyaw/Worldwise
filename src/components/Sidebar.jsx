@@ -8,7 +8,7 @@ function Sidebar() {
       <Logo />
       <AppNav />
 
-      <Outlet />
+      {/* <Outlet /> */}
 
       <footer className={styles.footer}>
         <p className={styles.copyright}>
