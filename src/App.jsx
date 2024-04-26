@@ -30,7 +30,7 @@ function App() {
       } catch (error) {
         alert(error.message);
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     }
     fetchCites();
