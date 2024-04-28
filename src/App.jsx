@@ -75,7 +75,7 @@ function App() {
         </Route>
 
         {/*Route for login page */}
-        <Route path="login" element={<Login />} />
+        {/* <Route path="login" element={<Login />} /> */}
       </Routes>
     </BrowserRouter>
   );
